@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    notifyStarted()
+    
     agent {
         docker {
             image 'node'
@@ -11,12 +11,14 @@ pipeline {
 
     stages {
         stage('Build') {
+            notifyStarted()
             steps {
                 echo 'Building...'
                 sh 'npm install'
             }
         }
         stage('Test') {
+            notifyStarted()
             steps {
                 echo 'Testing...'
                 sh 'npm test'
